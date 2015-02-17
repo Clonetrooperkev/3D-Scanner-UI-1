@@ -21,7 +21,6 @@
         StatusTracker.Text = "Reset Form"
         TakeNumber = 0
         TimerSecBox.Text = "10"
-        ProgressBar1.Value = 0
         CountDownBar.Value = 0
     End Sub
 
@@ -42,7 +41,7 @@
             TakeNumber += 1
             TakeNum.Text = TakeNumber
         End If
-        StatusTracker.Text = "Model will be saved as " + SaveAs.Text + 
+        StatusTracker.Text = "Model will be saved as " + SaveAs.Text
 
         Shell("C:\Python27\python.exe C:\Users\Punny\Desktop\Classes\Spring 2015\Csci 493\Senior Project\send_script.py " + SaveAs.Text + " " + TimerSecBox.Text)
         'Threading.Thread.Sleep(1000 * timer)
