@@ -5,7 +5,7 @@ import fcntl
 import subprocess
 import sys
 import time
-
+#Looking for data through the following IP and port
 MCAST_GRP = '224.1.1.1'
 MCAST_PORT = 5007
 
@@ -15,7 +15,7 @@ sock.bind(('', MCAST_PORT))
 mreq = struct.pack("4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
 
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-
+#Get the name of ip address that just give a file
 def get_ip_address(ifname):
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 return socket.inet_ntoa(fcntl.ioctl(
@@ -25,17 +25,17 @@ struct.pack('256s', ifname[:15])
 )[20:24])
 
 id = get_ip_address('eth0')
-
+#Differentiate each files by the last ip number
 ip1, ip2, ip3, ip4 = id.split('.')
 
 print 'ID: ' + ip4 
 
-#create an options file, this file should containt the parameters for the raspistill image cmd
+#Create an options file, this file should contain the parameters for the raspistill image cmd
 optionfile = open('/server/options.cfg','r')
 options = optionfile.readline()
 optionfile.close()
 print "optons: " + options
-
+#Shoot picture at different times to reduce power usage. Also deposits all the pictures into a new folder.
 while True:
 data = sock.recv(10240)
 data = data.strip()
