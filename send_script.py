@@ -6,15 +6,15 @@ import time
 #n = sys.stdin.readline()
 #n = n.strip('\n')
 print ("Photo name is: %s" % str(sys.argv[1]))
-#photo name
+#Photo name
 n = str(sys.argv[1])
 
-#timer
+#Timer
 a = int(sys,argv[2])
 
 time.sleep(a)
 
-
+#IP and Port
 MCAST_GRP = '224.1.1.1'
 MCAST_PORT = 5007
 
