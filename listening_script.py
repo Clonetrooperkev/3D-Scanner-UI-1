@@ -40,7 +40,7 @@ while True:
 data = sock.recv(10240)
 data = data.strip()
 if data == "reboot":
-print "rebooting..."
+print "Rebooting..."
 cmd = 'sudo reboot'
 pid = subprocess.call(cmd, shell=True) 
 else:
@@ -48,10 +48,10 @@ print "shooting " + data
 time.sleep(random.choice([0,1,2,3,4,5,6,7,8,9,10]))
 cmd = 'raspistill -o /tmp/photo.jpg ' + options 
 pid = subprocess.call(cmd, shell=True)
-print "creating directory"
+print "Creating directory"
 cmd = 'mkdir /server/3dscan/' + data 
 pid = subprocess.call(cmd, shell=True)
-print "copy image"
+print "Copy image"
 cmd = 'cp /tmp/photo.jpg /server/3dscan/' + data + "/" + data + "_" + ip4 + '.jpg'
 pid = subprocess.call(cmd, shell=True)
-print "photo uploaded"
+print "Photo uploaded"
